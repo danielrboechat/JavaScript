@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de idade</title>
+    <style>
+        body{
+            background-color: rgb(92, 228, 210);         
+            height: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+        header{
+            color: white;
+        }
+        section{
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.219);
+            height: fit-content;
+            width: 500px;
+        }
+        div{
+            padding: 10px;
+        }
+        div p#txt{
+            text-align: center;
+        }
+        img{
+            display: block;
+            height: 300px;
+            aspect-ratio: 1/1;
+            justify-items: center;
+            margin: auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verificador de idade</h1>
+    </header>
+    <main>
+        <section>
+            <div>
+                <form action="">
+                    <p><label for="iano">Ano de Nascimento: </label><input type="number" name="ano" id="iano"></p>
+                    <p>
+                        Sexo: <input type="radio" name="sexo" id="im" value="homem">
+                        <label for="im">Masculino</label>
+                        <input type="radio" name="sexo" id="if" value="mulher">
+                        <label for="if">Feminino</label>
+                    </p>
+                    <p><input type="button" value="Verificar" onclick="clicou()"></p>
+                </form>
+            </div>
+            <div>
+                <p id="txt"></p>
+                <div id="dimg"></div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; CursoemVideo</p>
+    </footer>
+    <script>
+        function clicou(){
+        var ano = document.getElementById('iano')
+        var txt = document.getElementById('txt')
+        var dimg = document.getElementById('dimg')
+        var idade = new Date().getFullYear() - ano.value
+        var img = document.createElement('img')
+        img.setAttribute('id','foto')
+        if (ano.value > new Date().getFullYear() || ano.value < 1925){
+            window.alert('Escolha um ano válido!')
+            return
+        }
+        else if (document.getElementsByName('sexo')[0].checked){
+            var sexo = 'homem'
+            txt.innerText = `Detectamos um ${sexo} de ${idade} anos!`
+                if(idade<=10){
+                    img.setAttribute('src', 'img/c-h.jpg')
+                }
+                else if(idade>10 && idade<21){
+                    img.setAttribute('src', 'img/j-h.jpg')
+                }
+                else if(idade>21 && idade<60){
+                    img.setAttribute('src', 'img/a-h.jpg')
+                }
+                else if(idade>60){
+                    img.setAttribute('src', 'img/i-h.jpg')
+                }
+        }
+        else if(document.getElementsByName('sexo')[1].checked){
+            var sexo = 'mulher'
+            txt.innerText = `Detectamos uma ${sexo} de ${idade} anos!`
+                if(idade<=10){
+                    img.setAttribute('src', 'img/c-m.jpg')
+                }
+                else if(idade>10 && idade<21){
+                    img.setAttribute('src', 'img/j-m.jpg')
+                }
+                else if(idade>21 && idade<60){
+                    img.setAttribute('src', 'img/a-m.jpg')
+                }
+                else if(idade>60){
+                    img.setAttribute('src', 'img/i-m.jpg')
+                }
+        } 
+        else{
+            window.alert('Escolha seu gênero!')
+        }
+        dimg.innerHTML = ''
+        dimg.appendChild(img) 
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        body{
+            background-color: rgb(92, 156, 228);         
+            height: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+        header{
+            color: white;
+        }
+        section{
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.219);
+            height: fit-content;
+            width: 500px;
+        }
+        div{
+            padding: 10px;
+        }
+        div p#txt{
+            text-align: center;
+        }
+        img{
+            display: block;
+            height: 300px;
+            aspect-ratio: 1/1;
+            justify-items: center;
+            margin: auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contador</h1>
+    </header>
+    <main>
+        <section>
+            <div>
+                <form action="">
+                    <p><label for="ini">Início: </label><input type="number" name="ini" id="ini"></p>
+                    <p><label for="fim">Fim: </label><input type="number" name="fim" id="fim"></p>
+                    <p><label for="pas">Passo: </label><input type="number" name="pas" id="pas"></p>
+                    <p><input type="button" value="Contar" onclick="clicou()"></p>
+                </form>
+            </div>
+            <div id="res">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; CursoemVideo</p>
+    </footer>
+    <script>
+        
+        function clicou(){
+            var ini = Number(document.getElementById('ini').value)
+            var fim = Number(document.getElementById('fim').value)
+            var pas = Number(document.getElementById('pas').value)
+            var res = document.getElementById('res')
+            var txt = document.createElement('p')
+            txt.setAttribute('id','txt')
+            var num = document.createElement('p')
+            num.setAttribute('id','num')
+            
+            if(ini === 0 || fim === 0 || pas <= 0) {
+                alert('Preencha todos os campos corretamente!')
+                txt.innerHTML = 'Impossível contar!'
+                return
+            }
+            else if (ini < fim) {
+                txt.innerHTML = 'Contando...'
+                for(var c = ini ; c <= fim ; c = c + pas){
+                    num.innerHTML += `&#x1F449; ${c} `
+                }
+            }
+            else{
+                txt.innerHTML = 'Contando...'
+                for(var c = ini ; c >= fim ; c = c - pas){
+                    num.innerHTML += `&#x1F449; ${c} `
+                }
+            }
+            res.appendChild(txt)
+            res.appendChild(num)
+        }
+    </script>
+</body>
+</html>
