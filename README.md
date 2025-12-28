@@ -54,7 +54,7 @@ This course is divided in a brief introduction and 6 modules.
 ## Technologies used
 
 - JavaScript  
-- HTML5]
+- HTML5
 - CSS3
 - Node.JS
 - VS Code
