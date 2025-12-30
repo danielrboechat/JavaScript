@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Números</title>
+    <style>
+        body{
+            background-color: rgb(177, 61, 8);         
+            height: 100%;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+        header{
+            color: white;
+        }
+        section{
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.219);
+            height: fit-content;
+            width: 500px;
+        }
+        div{
+            padding: 10px;
+        }
+        div p#txt{
+            text-align: center;
+        }
+        img{
+            display: block;
+            height: 300px;
+            aspect-ratio: 1/1;
+            justify-items: center;
+            margin: auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Analisador de Números</h1>
+    </header>
+    <main>
+        <section>
+            <div>
+                <form action="">
+                    <p>
+                        <label for="txtn">Número (de 1 a 100): </label><input type="number" name="txtn" id="txtn">
+                        <input type="button" value="Adicionar" onclick="adc()">
+                    </p>
+                </form>
+                <select name="lista" id="txtl" size="11" style="width: 200px;">
+                </select>
+                <p><input type="button" value="Finalizar" onclick="finalizar()"></p>
+            </div>
+            <div id="res">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; CursoemVideo</p>
+    </footer>
+    <script>
+        let num = document.getElementById('txtn')
+        let lista = document.getElementById('txtl')
+        let res = document.getElementById('res')
+        let x = []
+        
+        function isNumber(n){
+            if(Number(n)> 0 && Number(n) <= 100){
+                return true
+            } else {
+                return false
+            }
+        }
+
+        function inLista(n,l) {
+            if(l.indexOf(Number(n)) == -1){
+                return true
+            } else {
+                return false
+            }
+        }
+
+        function adc(){
+        if(isNumber(num.value) && inLista(num.value, x)){
+            x.push(Number(num.value))
+            let linha = document.createElement('option')
+            linha.text = `Valor ${Number(num.value)} adicionado`
+            lista.appendChild(linha)
+            res.innerHTML = ''
+        } else {
+            alert('Valor inválido ou já adicionado.')
+        }
+        num.value = ''
+        num.focus()
+    }
+
+        function finalizar(){
+            if(x.length === 0){
+                alert('Por favor adicione valores antes de finalizar')
+            } else {
+                let tot = x.length
+                let maior = x[0]
+                let menor = x[0]
+                let soma = 0
+                let media = 0
+                for(let pos in x){
+                    soma += x[pos]
+                    if(x[pos] > maior){
+                        maior = x[pos]
+                    }
+                    else if(x[pos] < menor){
+                        menor = x[pos]
+                    }
+                }
+                media = soma/tot
+                res.innerHTML = ''
+                res.innerHTML += `<p>Ao todo, temos ${tot} números cadastrados.</p>`
+                res.innerHTML += `<p>O maior valor informado foi ${maior}.</p>`
+                res.innerHTML += `<p>O menor valor informado foi ${menor}.</p>`
+                res.innerHTML += `<p>A soma dos valores informados é ${soma}.</p>`
+                res.innerHTML += `<p>A média dos valores informados é ${media}.</p>`
+            }
+        }
+    </script>
+</body>
+</html>
