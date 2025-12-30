@@ -6,11 +6,6 @@ This course is divided in a brief introduction and 6 modules.
 > ⚠️ This is **Part 1** of my JavaScript learning path.  
 > A second, more advanced JavaScript course will be added later.
 
-**Progress:** 50%
-
-[█████████░░░░░░░░] 50%
-
-
 ## What I learned in this course
 
 ### Introduction
