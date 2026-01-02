@@ -1,0 +1,5 @@
+JavaScript: o guia definitivo (caro) O'Reily
+O guia do programador (não é tao atualizado)
+Guia de Referencia da Mozilla e da ECMA (gratis)
+https://developer.mozilla.org/pt-BR/
+https://ecma-international.org/ (é o 262)
